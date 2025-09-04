@@ -57,8 +57,8 @@ The script uses built-in PowerShell commands, so no extra tools are needed.
           ```
 
   -   **Windows (Task Scheduler)**:
-    1.  Open Task Scheduler.
-    2.  Create a new task to run every hour.
+    1.  Change NAME in the Windows/script.ps1.
+    2.  Open task scheduler (taskschd.msc) and Create a new task to run every hour.
     3.  Set the action to "Start a program" and use `powershell.exe` with the argument `-ExecutionPolicy Bypass -File "C:\Users\<USERNAME>\auto-wallpaper-changer\Windows\script.ps1"`.
 ---
 
