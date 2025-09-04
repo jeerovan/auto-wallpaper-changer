@@ -1,0 +1,7 @@
+[Unit]
+Description=Update wallpaper
+Wants=wallpaper.timer
+
+[Service]
+ExecStart=/usr/bin/bash /home/<USER>/auto-wallpaper-changer/Debian12/script.sh
+Type=oneshot

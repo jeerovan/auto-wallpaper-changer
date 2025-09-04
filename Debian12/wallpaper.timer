@@ -1,0 +1,10 @@
+[Unit]
+Description=Run wallpaper update service every hour
+
+[Timer]
+Unit=wallpaper.service
+OnCalendar=hourly
+AccuracySec=1s
+
+[Install]
+WantedBy=timers.target
