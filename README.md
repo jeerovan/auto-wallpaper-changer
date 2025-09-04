@@ -4,7 +4,7 @@
 ---
 
 ### Key Features
-
+- **Cross-Platform**: Works seamlessly on Windows, and Linux.
 - **Dynamic Themes**: Automatically fetches light-themed wallpapers during the day and dark-themed ones at night.
 - **Personalized**: Tracks wallpapers provided to a user to ensure a fresh experience.
 - **Hourly Updates**: Your desktop wallpaper is refreshed every hour, for free.
@@ -33,6 +33,8 @@ Before you begin, ensure you have the required command-line tools installed.
 
 - **For Debian/Ubuntu**:
 `sudo apt-get update && sudo apt-get install curl jq`
+- **For Windows**:
+The script uses built-in PowerShell commands, so no extra tools are needed.
 
 #### Installation
 
@@ -53,6 +55,11 @@ Before you begin, ensure you have the required command-line tools installed.
           sudo systemctl daemon-reload
           sudo systemctl enable wallpaper.timer
           ```
+
+  -   **Windows (Task Scheduler)**:
+    1.  Open Task Scheduler.
+    2.  Create a new task to run every hour.
+    3.  Set the action to "Start a program" and use `powershell.exe` with the argument `-ExecutionPolicy Bypass -File "C:\Users\<USERNAME>\auto-wallpaper-changer\Windows\script.ps1"`.
 ---
 
 ### License

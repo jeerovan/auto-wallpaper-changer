@@ -13,7 +13,7 @@ mkdir -p "$WALLPAPER_DIR"
 
 # --- API and Wallpaper Logic ---
 # Fetch JSON response from your wallpaper API.
-API_RESPONSE=$(curl -s "${API_URL}?name=${TARGET_USER}&hour=$(date +%H)")
+API_RESPONSE=$(curl -s "${API_URL}&name=${TARGET_USER}&hour=$(date +%H)")
 
 # Use jq to parse the JSON and extract the 'imageUrl'.
 IMAGE_URL=$(echo "$API_RESPONSE" | jq -r '.imageUrl')
