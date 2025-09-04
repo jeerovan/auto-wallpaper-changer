@@ -4,24 +4,11 @@
 ---
 
 ### Key Features
-- **Cross-Platform**: Works seamlessly on Windows, and Linux.
+- **Cross-Platform**: Works seamlessly on Windows, OSX and Linux.
 - **Dynamic Themes**: Automatically fetches light-themed wallpapers during the day and dark-themed ones at night.
 - **Personalized**: Tracks wallpapers provided to a user to ensure a fresh experience.
 - **Hourly Updates**: Your desktop wallpaper is refreshed every hour, for free.
 - **Lightweight**: A simple script with minimal dependencies.
-
----
-
-### How It Works
-
-This project uses a custom API to interact with the Unsplash database. The core logic is as follows:
-
-1.  **Request**: The script sends a request to the API with a `name` and the current `hour`.
-2.  **API Logic**: The API checks if the user exists. It then determines whether to serve a light or dark themed wallpaper based on the hour provided. It also keeps track of which wallpapers have been served to that user to avoid repetition.
-3.  **Download**: The script receives a JSON response containing a direct `imageUrl` and downloads the high-resolution image.
-4.  **Set Wallpaper**: The script then sets the downloaded image as the desktop wallpaper.
-
-This entire process is automated to run hourly.
 
 ---
 
@@ -33,6 +20,8 @@ Before you begin, ensure you have the required command-line tools installed.
 
 - **For Debian/Ubuntu**:
 `sudo apt-get update && sudo apt-get install curl jq`
+- **For macOS (using Homebrew)**:
+`brew install curl`
 - **For Windows**:
 The script uses built-in PowerShell commands, so no extra tools are needed.
 
@@ -40,6 +29,7 @@ The script uses built-in PowerShell commands, so no extra tools are needed.
 
 1.  **Clone the repository**:
   ```
+  cd ~
   git clone https://github.com/jeerovan/auto-wallpaper-changer.git
   cd auto-wallpaper-changer
   ```
@@ -56,8 +46,16 @@ The script uses built-in PowerShell commands, so no extra tools are needed.
           sudo systemctl enable wallpaper.timer
           ```
 
+  -   **macOS (launchd)**:
+    1.  Customize the `script.sh` file with TargetUser and `com.jeerovan.comfer.plist` file with the correct path to the `script.sh` script.
+    2.  Copy the plist to your LaunchAgents directory:
+        ```
+        cp com.jeerovan.comfer.plist ~/Library/LaunchAgents/
+        launchctl load ~/Library/LaunchAgents/wallpaper.plist
+        ```        
+
   -   **Windows (Task Scheduler)**:
-    1.  Change NAME in the Windows/script.ps1.
+    1.  Change NAME in the script Windows/script.ps1.
     2.  Open task scheduler (taskschd.msc) and Create a new task to run every hour.
     3.  Set the action to "Start a program" and use `powershell.exe` with the argument `-ExecutionPolicy Bypass -File "C:\Users\<USERNAME>\auto-wallpaper-changer\Windows\script.ps1"`.
 ---
