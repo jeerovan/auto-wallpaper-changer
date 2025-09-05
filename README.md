@@ -69,5 +69,5 @@ Distributed under the MIT License. See `LICENSE` for more information.
 ### Acknowledgments
 
 -   **Unsplash** for providing the incredible collection of photos.
-
+-   Uses the same API which powers [**Comfer Launcher**](https://play.google.com/store/apps/details?id=com.jeerovan.comfer)
 
